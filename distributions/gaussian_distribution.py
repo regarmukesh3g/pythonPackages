@@ -24,7 +24,13 @@ class Gaussian(Distribution):
         Returns:
             None
         """
-        Distribution.read_data_file(file_name, sample)
+        data_list = []
+        with open(file_name, 'r') as data_file:
+            data = data_file.readlines()
+            for line in data:
+                data_list.append(int(line))
+        data_file.close()
+        self.data = data_list
         self.calculate_mean()
         self.calculate_stdev(sample)
 
@@ -45,7 +51,7 @@ class Gaussian(Distribution):
         """
         Plot histogram of the data.
         """
-        plt.hist(self.data,density=True)
+        plt.hist(self.data, density=True)
         plt.title('Histogram of data')
         plt.ylabel('Density')
         plt.show()
@@ -73,9 +79,11 @@ class Gaussian(Distribution):
         plt.ylabel('Density')
         plt.show()
 
-
     def __add__(self, other):
         result = Gaussian(0, 0)
         result.mean = self.mean + other.mean
         result.stdev = math.sqrt(self.stdev ** 2 + other.stdev ** 2)
         return result
+
+    def __repr__(self):
+        return "Mean: {} and standard deviation is {} for data.".format(self.mean, self.stdev)
