@@ -6,10 +6,14 @@ import math
 
 
 class Distribution:
-    """
-    General distribution class
-    """
+
     def __init__(self, mu, sigma):
+        """
+        Base distribution class for data.
+        Args:
+            mu: mean of the data.
+            sigma: standard deviation of data.
+        """
         self.mean = mu
         self.stdev = sigma
         self.data = []
@@ -28,7 +32,8 @@ class Distribution:
             data = data_file.readlines()
             for line in data:
                 data_list.append(int(line))
-            self.data = data_list
+        data_file.close()
+        self.data = data_list
 
     def calculate_mean(self):
         """
@@ -57,6 +62,5 @@ class Distribution:
         total = 0
         for x_val in self.data:
             total += (x_val - self.mean) * (x_val - self.mean)
-
         self.stdev = math.sqrt(total / data_len)
         return self.stdev

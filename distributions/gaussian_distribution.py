@@ -41,6 +41,15 @@ class Gaussian(Distribution):
         power = -(((x_val - self.mean) / self.stdev) ** 2)
         return coeff * math.exp(power)
 
+    def plot_hist(self):
+        """
+        Plot histogram of the data.
+        """
+        plt.hist(self.data,density=True)
+        plt.title('Histogram of data')
+        plt.ylabel('Density')
+        plt.show()
+
     def plot_histogram_pdf(self, n_spaces=20):
         """
         Plots probability distribution function histogram of the given data.
