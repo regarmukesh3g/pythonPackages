@@ -28,7 +28,7 @@ class Distribution:
             None
         """
         data_list = []
-        with open(file_name, 'r') as data_file:
+        with open(file_name) as data_file:
             data = data_file.readlines()
             for line in data:
                 data_list.append(int(line))
@@ -45,7 +45,7 @@ class Distribution:
         self.mean = avg
         return self.mean
 
-    def calculate_stdev(self, sample):
+    def calculate_stdev(self, sample=True):
         """
         Calculates standard deviation of the distribution.
         Args:
@@ -56,11 +56,12 @@ class Distribution:
         """
         data_len = 0
         if sample:
-            data_len = len(self.data) - 2
+            data_len = len(self.data) - 1
         else:
             data_len = len(self.data)
         total = 0
+        self.calculate_mean()
         for x_val in self.data:
             total += (x_val - self.mean) * (x_val - self.mean)
-        self.stdev = math.sqrt(total / data_len)
+        self.stdev = math.sqrt(total / data_len )
         return self.stdev

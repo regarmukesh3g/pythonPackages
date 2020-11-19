@@ -15,24 +15,6 @@ class Gaussian(Distribution):
     def __init__(self, mu, sigma):
         Distribution.__init__(self, mu, sigma)
 
-    def read_data_file(self, file_name, sample=True):
-        """
-        Read data from a file
-        Args:
-            file_name: filename from which data will be parsed.
-            sample: Whether it is a sample data?
-        Returns:
-            None
-        """
-        data_list = []
-        with open(file_name, 'r') as data_file:
-            data = data_file.readlines()
-            for line in data:
-                data_list.append(int(line))
-        data_file.close()
-        self.data = data_list
-        self.calculate_mean()
-        self.calculate_stdev(sample)
 
     def pdf(self, x_val):
         """
@@ -43,8 +25,8 @@ class Gaussian(Distribution):
         Returns:
             Probability distribution at x.
         """
-        coeff = 1 / math.sqrt(2 * math.pi * self.stdev * self.stdev)
-        power = -(((x_val - self.mean) / self.stdev) ** 2)
+        coeff = 1 /float( math.sqrt(2 * math.pi * self.stdev * self.stdev))
+        power = -(((x_val - self.mean) / float(self.stdev)) ** 2)/float(2)
         return coeff * math.exp(power)
 
     def plot_hist(self):
