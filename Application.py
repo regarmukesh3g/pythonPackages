@@ -9,7 +9,7 @@ g1 = Gaussian(20, 5)
 g2 = Gaussian(24, 4)
 g3 = g1 + g2
 g3
-from distributions import Binomial
+from dist_pdf import Binomial
 
 b1 = Binomial()
 b1.read_data_file('numbers_binomial.txt')
