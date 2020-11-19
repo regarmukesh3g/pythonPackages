@@ -1,4 +1,4 @@
-# Any changes to the distributions library should be reinstalled with
+# Any changes to the dist_pdf library should be reinstalled with
 #  pip install --upgrade .
 
 # For running unit tests, use
@@ -6,8 +6,8 @@
 
 import unittest
 
-from distributions import Gaussian
-from distributions import Binomial
+from dist_pdf import Gaussian
+from dist_pdf import Binomial
 
 
 class TestGaussianClass(unittest.TestCase):

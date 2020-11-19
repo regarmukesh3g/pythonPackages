@@ -5,7 +5,7 @@ Setup for distribution package.
 from setuptools import setup
 
 setup(name='dist_pdf',
-      version='SNAPSHOT',
+      version='1.0',
       description='Distribution of data',
-      packages=['distributions'],
+      packages=['dist_pdf'],
       zip_sage=False)

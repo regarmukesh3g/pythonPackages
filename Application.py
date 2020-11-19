@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from distributions.gaussian_distribution import Gaussian
+from dist_pdf.gaussian_distribution import Gaussian
 
 gaussian = Gaussian(0, 0)
 gaussian.read_data_file('numbers.txt')
